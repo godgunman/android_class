@@ -1,4 +1,4 @@
-android_class
+Android Class
 =============
 
-android class
+My android teaching class material. All rights reserved.
