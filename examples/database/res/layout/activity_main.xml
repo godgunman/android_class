@@ -1,0 +1,64 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity" >
+
+        <TextView
+            android:id="@+id/people"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world" />
+
+        <LinearLayout
+            android:id="@+id/button_contaier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/people"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_rand"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Rand" />
+
+            <Button
+                android:id="@+id/btn_insert"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Insert" />
+            
+            <Button
+                android:id="@+id/btn_del"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="del" />
+
+            <Button
+                android:id="@+id/btn_show"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="show" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/database_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_contaier"
+            android:layout_marginTop="15dp"
+            android:text="TextView" />
+    </RelativeLayout>
+
+</ScrollView>
