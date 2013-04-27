@@ -1,0 +1,25 @@
+# Android source #
+###################
+*.apk
+*.ap_
+*.dex
+bin/
+gen/
+*.class
+
+# Eclipse files #
+######################
+.project
+.metadata
+.classpath
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
