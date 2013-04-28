@@ -16,6 +16,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends FragmentActivity {
 
+	/**
+	 * @see
+	 * 詳細過程請參考這個 Google doc。裡面也有講到如何使用範例。
+	 * https://docs.google.com/document/d/1br1E7v2OUqpFACC-Q_zUX0EnXFcM9IVd_d1SSo2Ykws/edit
+	 */
 	private SupportMapFragment mapFragment;
 	private GoogleMap map;
 	private LocationManager locMgr;
