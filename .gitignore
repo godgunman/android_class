@@ -9,9 +9,9 @@ gen/
 
 # Eclipse files #
 ######################
-.project
+# .project
+# .classpath
 .metadata
-.classpath
 
 # OS generated files #
 ######################
