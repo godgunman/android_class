@@ -18,13 +18,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_relative_layout);
+		setContentView(R.layout.main);
 
 		monthSpinner = (Spinner) findViewById(R.id.month);
 		dateSpinner = (Spinner) findViewById(R.id.date);
 		String[] month = getResources().getStringArray(R.array.month);
 
-		/* 從 arrays.xml 拿出資料後放入 adapter 並只用內建的 layout */
+		/* 從 arrays.xml 拿出資料後放入 adapter 並使用內建的 layout */
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, month);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
