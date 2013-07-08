@@ -1,7 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <item
-        android:id="@+id/action_take_photo"
-        android:showAsAction="always"
-        android:icon="@android:drawable/stat_notify_sync"/>
-</menu>
