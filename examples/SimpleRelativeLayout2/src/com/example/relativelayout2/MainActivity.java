@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	Spinner monthSpinner;
-	Spinner dateSpinner;
+	private static int[] DAY_LIMIT = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31,
+			30, 31 };
+
+	private Spinner monthSpinner;
+	private Spinner daySpinner;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 
 		monthSpinner = (Spinner) findViewById(R.id.month);
-		dateSpinner = (Spinner) findViewById(R.id.date);
+		daySpinner = (Spinner) findViewById(R.id.day);
 		String[] month = getResources().getStringArray(R.array.month);
 
 		/* 從 arrays.xml 拿出資料後放入 adapter 並使用內建的 layout */
@@ -34,36 +37,34 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
-					int pos, long id) {
+					int position, long id) {
 
-				String content = parent.getItemAtPosition(pos).toString();
-				Toast.makeText(MainActivity.this, content,
-						Toast.LENGTH_SHORT).show();
+				int dayLimt = DAY_LIMIT[position];
+				Integer[] date = new Integer[dayLimt];
+				for (int i = 0; i < dayLimt; i++) {
+					date[i] = i + 1;
+				}
+
+				ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(
+						MainActivity.this,
+						android.R.layout.simple_spinner_item, date);
+				adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				daySpinner.setAdapter(adapter);
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
-				Toast.makeText(MainActivity.this, "nothing",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(MainActivity.this, "nothing", Toast.LENGTH_SHORT)
+						.show();
 			}
 		});
-
-		String[] date = new String[31];
-		for (int i = 0; i < 31; i++) {
-			date[i] = String.valueOf(i + 1);
-		}
-
-		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, date);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		dateSpinner.setAdapter(adapter2);
 
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.relative_layout, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 

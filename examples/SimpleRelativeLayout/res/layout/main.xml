@@ -30,7 +30,7 @@
     />
 
     <Spinner
-        android:id="@+id/date"
+        android:id="@+id/day"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
 		android:layout_alignParentRight="true"
@@ -40,8 +40,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/date"
-        android:layout_below="@+id/date"
+        android:layout_alignLeft="@+id/day"
+        android:layout_below="@+id/day"
         android:text="Done" />
 
 </RelativeLayout>

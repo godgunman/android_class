@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Reminder name">
+        android:hint="Reminder name" >
 
         <requestFocus />
     </EditText>
@@ -25,22 +25,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/reminder"
-        android:layout_below="@id/reminder" />
+        android:layout_below="@id/reminder"
+        android:layout_toLeftOf="@+id/day" />
 
     <Spinner
-        android:id="@+id/date"
+        android:id="@+id/day"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
-		android:layout_alignParentRight="true"
-		android:layout_below="@id/reminder"
-	/>
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/reminder" />
 
     <Button
-        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/date"
-        android:layout_below="@+id/date"
-        android:text="Button" />
+        android:layout_alignLeft="@+id/day"
+        android:layout_below="@+id/day"
+        android:text="Done" />
 
 </RelativeLayout>
