@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+        
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        
+        <link rel="stylesheet" href="reveal/css/reveal.min.css">
+        <link rel="stylesheet" href="reveal/css/theme/default.css" id="theme">
+        
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+        
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h2>Android 基礎應用程式設計</h2>
+                    <img src="img/Android_Robot_200.png">
+                </section>
+                <section>
+                    <h2>課程介紹</h2>
+                    <ul>
+                        <li>Android 基礎應用程式設計</li> <br>
+                        <li>課程目標
+                            <ul>
+                                <li>對 Android 有初步認識</li>
+                                <li>學會開發 Android 應用程式</li>
+                                <li>本課程只是 Android 的冰山一角</li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li>上課方式
+                            <ul>
+                                <li>10% 投影片講解</li>
+                                <li>70% 同步實作講解</li>
+                                <li>20% 學員自己動手實作</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>講師介紹</h2>
+                    <ul>
+                        <li>郭冠宏（GGM）</li>
+                        <li>台大資訊系</li>
+                        <br>
+                        <li>工作經驗（實習）                            
+                            <ul>
+                                <li>Google、Intel、Wantoto Inc、Qualcomm</li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li>教學經驗（課程助教）
+                            <ul>
+                                <li>高等計算機程式設計</li>
+                                <li>網路平台與服務程式設計</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程大綱（cont.）</h2>
+                    <ul>
+                        <li>Day 0 <br> 熟悉 Eclipse 與 Android SDK，介紹 Android 的專案架構</li><br>
+                        <li>Day 1 <br> 介面設計I，基本元件（Widget）與排版（Layout）</li><br>
+                        <li>Day 2 <br> Activity 生命週期與傳遞資料</li><br>
+                        <li>Day 3 <br> Intents 與 Broadcast Receiver</li><br>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程大綱（cont.）</h2>
+                    <ul>
+                        <li>Day 4 <br> 介面設計II，Menus，DatePicker，ListView</li><br>
+                        <li>Day 5 <br> 介面設計III，Frament，ActionBar</li><br>
+                        <li>Day 6 <br> 資料存取，SharedPreferences、SQLite、File、Assets</li><br>
+                        <li>Day 7 <br> 讀取手機資料，簡訊，通訊錄，系統資訊</li><br>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程大綱</h2>
+                    <ul>
+                        <li>Day 8 <br> 連接網際網路</li><br>
+                        <li>Day 9 <br> 使用第三方API，Google Maps，Facebook</li><br>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程評分</h2>
+                    <ul>                        
+                        <li>75% 作業，三次作業達標準即滿分，可討論可查資料</li><br>
+                        <li>25% 出席，可遲到，可早退，可請假</li><br>
+                        <li>及格標準 70 分</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程參考資料</h2>
+                    <ul>                        
+                        <li><a href="http://developer.android.com/index.html">Android Developer</a></li><br>
+                        <li><a href="http://developer.android.com/sdk/index.html#ExistingIDE">Android-sdk/samples</a></li><br>
+                        <li><a href="http://www.vogella.com/articles/Android/article.html">Vogella Android Development Tutorial</a></li><br>
+                        <li><a href="https://code.google.com/p/androidbmi/">Android BMI（中文）</a></li><br>
+                        <li><a href="http://ppt.cc/CpUN">前資訊系統訓練班投影片</a></li><br>
+                    </ul>
+                </section>
+                <section>
+                    <h2>跳過那些可以在wiki上找的</h2><h3><br><a href="http://zh.wikipedia.org/wiki/Android">簡介與歷史</a></h3>
+                </section>
+                <section>
+                    <section>
+                        <h2>環境設定（cont.）</h2>
+                        <ul>
+                            <li>安裝清單（依序）</li>
+                            <ul>
+                                <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">Java JDK</a></li>
+                                <li><a href="http://www.eclipse.org/downloads/packages/eclipse-classic-422/junosr2">Eclipse</a></li>
+                                <li><a href="http://dl.google.com/android/installer_r21.1-windows.exe">Android SDK</a></li>
+                                <li><a href="http://developer.android.com/sdk/installing/installing-adt.html">Android Development Tools（Eclipse plugin）</a></li>
+                            </ul>
+                            <br>
+                            <li>或是用懶人包</li>
+                            <ul>
+                                <li><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86-20130219.zip">Windows 32-bit</a></li>
+                                <li><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86_64-20130219.zip">Windows 64-bit</a></li>
+                                <li><a href="http://dl.google.com/android/adt/adt-bundle-mac-x86_64-20130219.zip">Mac OS X 64-bit</a></li>                            
+                            </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>環境設定（cont.）</h2>
+                        <ul>
+                            <li>Java 環境變數設定（Windows）</li><br>
+                            <li>我的電腦右鍵->內容->進階->環境變數 新增:<br>
+                                <ul>
+                                    <li>a. 變數名稱 PATH <br>變數值 C:\Program Files\Java\jdk1.7.0\bin</li><br>
+                                    <li>b. 變數名稱 CLASSPATH <br>變數值 C:\Program Files\Java\jdk1.7.0\lib</li><br>
+                                    <li>如果有別的環境變數，則要在前面加上分號</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>環境設定（cont.）</h2>
+                        <img src="img/jdk_setting.png">
+                    </section>
+                    <section>
+                        <h2>環境設定（cont.）</h2>
+                        <ul>
+                            <li>Eclipse plugin</li><br>
+                            <li>Eclipse->Help->Install New Software-></li><br>
+                            <li>https://dl-ssl.google.com/android/eclipse/</li><br>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>環境設定（cont.）</h2>
+                        <ul>
+                            <li>Eclipse plugin</li><br>
+                            <li>Eclipse->Help->Install New Software-></li><br>
+                            <li>https://dl-ssl.google.com/android/eclipse/</li><br>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>環境設定（cont.）</h2>
+                        <img src="img/eclipse_plugin1.png">
+                    </section>
+                    <section>
+                        <h2>環境設定（cont.）</h2>
+                        <img src="img/eclipse_plugin2.png">
+                    </section>
+                    <section>
+                        <h2>環境設定</h2>
+                        <img src="img/eclipse_plugin3.png">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>開發工具（cont.）</h2>
+                        <lu>
+                            <li>Eclipse</li>
+                            <img src="img/eclipse.png">
+                        </lu>
+                    </section>
+                    <section>
+                        <h2>開發工具（cont.）</h2>
+                        <lu>
+                            <li>Eclipse Show View</li>
+                            <img src="img/eclipse_showview.png">
+                        </lu>
+                    </section>
+                    <section>
+                        <h2>開發工具（cont.）</h2>
+                        <lu>
+                            <li>Eclipse Tool Bar</li>
+                            <img src="img/eclipse_toolbar.png">
+                        </lu>
+                    </section>
+                    <section>
+                        <h2>開發工具（cont.）</h2>
+                        <lu>
+                            <li>Eclipse Main View</li>
+                            <img src="img/eclipse_mainview.png">
+                        </lu>
+                    </section>
+                    <section>
+                        <h2>開發工具（cont.）</h2>
+                        <lu>
+                            <li>Eclipse DDMS</li>
+                            <img src="img/ddms.png">
+                        </lu>
+                    </section>
+                    <section>
+                        <h2>開發工具（cont.）</h2>
+                        <lu>
+                            <li>Eclipse DDMS device</li>
+                            <img src="img/device.png">
+                        </lu>
+                    </section>
+                    <section>
+                        <h2>開發工具（cont.）</h2>
+                        <lu>
+                            <li>Eclipse DDMS logcat</li>
+                            <img src="img/logcat.png">
+                        </lu>
+                    </section>
+                    <section>
+                        <h2>開發工具（cont.）</h2>
+                        <lu>
+                            <li> Android Emulator
+                            </li>
+                            <img src="img/android_emulator.png">
+                        </lu>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>New Android Porject（cont.）</h2>
+                        <lu>
+                            <li> File -> New -> Android Application Project
+                            </li>
+                            <img src="img/newproject1.png">
+                        </lu>
+                    </section>
+                    <section>
+                        <h2>New Android Porject（cont.）</h2>
+                        <lu>
+                            <li> Next .. Next and Next
+                            </li>
+                            <img src="img/newproject2.png">
+                        </lu>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <script src="reveal/lib/js/head.min.js"></script>
+        <script src="reveal/js/reveal.min.js"></script>
+        
+        <script>
+            
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+                
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+            
+        </script>
+    </body>
+</html>
