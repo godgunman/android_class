@@ -14,24 +14,24 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 
-public class ShowMessageActivity extends Activity {
+public class MessageActivity extends Activity {
 
 	private ListView listView;
-	private MessageDBHelper dbhelp;
+	private MessageDBHelper dbHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.message);
+		setContentView(R.layout.activity_message);
 
 		listView = (ListView) findViewById(R.id.listView1);
-		dbhelp = new MessageDBHelper(this);
+		dbHelper = new MessageDBHelper(this);
 
 		Intent intent = this.getIntent();
 		String text = intent.getStringExtra("message");
 		boolean isEncrypt = intent.getBooleanExtra("isEncrypt", false);
 
-		dbhelp.insert(new Message(text, isEncrypt));
+		dbHelper.insert(new Message(text, isEncrypt));
 
 		/* 兩種方法實作 Adapter */
 		
@@ -40,7 +40,7 @@ public class ShowMessageActivity extends Activity {
 	}
 
 	public SimpleCursorAdapter getCursorAdapter() {
-		Cursor c = dbhelp.getMessagesCursor();
+		Cursor c = dbHelper.getMessagesCursor();
 		String[] from = new String[] { "text", "isEncrypt" };
 		int[] to = new int[] { R.id.textView1, R.id.textView2 };
 
@@ -55,7 +55,7 @@ public class ShowMessageActivity extends Activity {
 
 	public SimpleAdapter getSimpleAdapter() {
 		List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-		List<Message> messages = dbhelp.getMessages();
+		List<Message> messages = dbHelper.getMessages();
 		for (Message mes : messages) {
 			Map<String, String> t = new HashMap<String, String>();
 			t.put("text", mes.getText());

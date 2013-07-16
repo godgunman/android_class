@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.simpleui4.ShowMessageActivity"></activity>
+        <activity android:name="com.example.simpleui4.MessageActivity"></activity>
     </application>
 
 </manifest>
