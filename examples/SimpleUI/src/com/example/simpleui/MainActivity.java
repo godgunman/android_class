@@ -45,7 +45,6 @@ public class MainActivity extends Activity {
 				if (event.getAction() == KeyEvent.ACTION_DOWN) {
 					if (keyCode == KeyEvent.KEYCODE_ENTER) {
 						Log.d("debug", "enter");
-
 						sendMessage();
 						return true;
 					}

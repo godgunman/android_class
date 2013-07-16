@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TextView;
 
-public class Message extends Activity {
+public class MessageActivity extends Activity {
 
-	TextView textView;
+	private TextView textView;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-    	setContentView(R.layout.message);
+    	setContentView(R.layout.activity_message);
 
     	textView = (TextView) findViewById(R.id.messageTextView);
     	

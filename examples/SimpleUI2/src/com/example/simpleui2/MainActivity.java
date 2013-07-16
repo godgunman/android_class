@@ -20,67 +20,63 @@ public class MainActivity extends Activity {
 	private Button submitButton;
 	private EditText inputEdit;
 	private CheckBox isEncrypt;
-	
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.simple_ui);
-        
-        submitButton = (Button) findViewById(R.id.submitButton);
-        inputEdit = (EditText) findViewById(R.id.input);
-        isEncrypt = (CheckBox) findViewById(R.id.encrypt);
-        
-        submitButton.setOnClickListener(new OnClickListener() {
-			
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		submitButton = (Button) findViewById(R.id.submitButton);
+		inputEdit = (EditText) findViewById(R.id.input);
+		isEncrypt = (CheckBox) findViewById(R.id.encrypt);
+
+		submitButton.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				Log.d("debug", "click");
-				
-				Editable editable = inputEdit.getText();
-				String text = editable.toString();
-				if (isEncrypt.isChecked()) {
-					text = "************";
-				}
-				
-				editable.clear();
-				Toast.makeText(MainActivity.this, 
-						text, Toast.LENGTH_SHORT).show();
-				
-				Intent intent = new Intent();
-				intent.putExtra("message", text);
-				intent.setClass(MainActivity.this, Message.class);
-				
-				MainActivity.this.startActivity(intent);
+				sendMessage();
 			}
 		});
-        
-        inputEdit.setOnKeyListener(new OnKeyListener() {
-			
+
+		inputEdit.setOnKeyListener(new OnKeyListener() {
+
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				if(event.getAction() == KeyEvent.ACTION_DOWN){
-					if(keyCode == KeyEvent.KEYCODE_ENTER) {
-						
-						Editable editable = inputEdit.getText();
-						String text = editable.toString();
-						editable.clear();
-						
-						Toast.makeText(MainActivity.this, 
-								text, Toast.LENGTH_SHORT).show();
-						return true;
+				if (event.getAction() == KeyEvent.ACTION_DOWN) {
+					if (keyCode == KeyEvent.KEYCODE_ENTER) {
+						Log.d("debug", "enter");
+						sendMessage();
 					}
 				}
 				return false;
 			}
 		});
 
-    }
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	private void sendMessage() {
+		Editable editable = inputEdit.getText();
+		String text = editable.toString();
+		if (isEncrypt.isChecked()) {
+			text = "************";
+		}
+
+		editable.clear();
+		Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
+
+		Intent intent = new Intent();
+		intent.putExtra("message", text);
+		intent.setClass(MainActivity.this, MessageActivity.class);
+
+		MainActivity.this.startActivity(intent);
+	}
+
 }
