@@ -29,10 +29,9 @@ public class MessageActivity extends Activity {
 
 		listView = (ListView) findViewById(R.id.listView1);
 		progressDialog = new ProgressDialog(this);
-		progressDialog.setTitle("Loading");
+		progressDialog.setTitle("Loading...");
 		progressDialog.show();
 		setListViewContent();
-		
 	}
 
 	public void setListViewContent() {
@@ -41,7 +40,6 @@ public class MessageActivity extends Activity {
 		query.findInBackground(new FindCallback() {
 			@Override
 			public void done(List<ParseObject> objects, ParseException e) {
-				// TODO Auto-generated method stub
 				
 				List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 				for (ParseObject obj : objects) {

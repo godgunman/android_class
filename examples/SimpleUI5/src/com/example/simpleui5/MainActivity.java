@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.Editable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -57,12 +58,8 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-
-				Editable editable = inputEdit.getText();
-				String text = editable.toString();
-
-				editable.clear();
-				goToMessageActivity(text, isEncrypt.isChecked());
+				Log.d("debug", "click");
+				sendMessage();
 			}
 		});
 
@@ -85,9 +82,8 @@ public class MainActivity extends Activity {
 
 				if (event.getAction() == KeyEvent.ACTION_DOWN) {
 					if (keyCode == KeyEvent.KEYCODE_ENTER) {
-
-						editable.clear();
-						goToMessageActivity(text, isEncrypt.isChecked());
+						Log.d("debug", "enter");
+						sendMessage();
 						return true;
 					}
 				}
@@ -100,21 +96,23 @@ public class MainActivity extends Activity {
 		});
 	}
 
-	public void goToMessageActivity(String text, boolean isChecked) {
+	public void sendMessage() {
+
+		Editable editable = inputEdit.getText();
+		String text = editable.toString();
+
+		editable.clear();
 
 		ParseObject mesObject = new ParseObject("Message");
 		mesObject.put("text", text);
-		mesObject.put("isEncrypt", isChecked);
+		mesObject.put("isEncrypt", isEncrypt.isChecked());
 		mesObject.saveInBackground(new SaveCallback() {
-
 			@Override
 			public void done(ParseException e) {
-
 				if (e == null) {
 					Intent intent = new Intent();
 					intent.setClass(MainActivity.this,	MessageActivity.class);
-
-					MainActivity.this.startActivity(intent);
+					startActivity(intent);
 				}
 			}
 		});
