@@ -16,6 +16,7 @@ gen/
 .project
 .classpath
 .metadata
+.settings
 
 # OS generated files #
 ######################
