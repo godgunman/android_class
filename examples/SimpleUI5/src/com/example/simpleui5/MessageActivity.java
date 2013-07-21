@@ -21,7 +21,7 @@ public class MessageActivity extends Activity {
 
 	private ListView listView;
 	private ProgressDialog progressDialog;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,23 +35,25 @@ public class MessageActivity extends Activity {
 	}
 
 	public void setListViewContent() {
-		
-		ParseQuery query = new ParseQuery("Message");
-		query.findInBackground(new FindCallback() {
+
+		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Message");
+		query.findInBackground(new FindCallback<ParseObject>() {
 			@Override
 			public void done(List<ParseObject> objects, ParseException e) {
-				
+
 				List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 				for (ParseObject obj : objects) {
 					Map<String, String> t = new HashMap<String, String>();
 					t.put("text", obj.getString("text"));
-					t.put("isEncrypt", String.valueOf(obj.getBoolean("isEncrypt")));
+					t.put("isEncrypt",
+							String.valueOf(obj.getBoolean("isEncrypt")));
 					data.add(t);
 				}
-				SimpleAdapter simpleAdapter = new SimpleAdapter(MessageActivity.this, data,
-						R.layout.listview_item, new String[] { "text", "isEncrypt" },
-						new int[] { R.id.textView1, R.id.textView2 });
-				
+				SimpleAdapter simpleAdapter = new SimpleAdapter(
+						MessageActivity.this, data, R.layout.listview_item,
+						new String[] { "text", "isEncrypt" }, new int[] {
+								R.id.textView1, R.id.textView2 });
+
 				listView.setAdapter(simpleAdapter);
 				progressDialog.dismiss();
 			}
