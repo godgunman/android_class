@@ -17,6 +17,8 @@ gen/
 .classpath
 .metadata
 .settings
+.mylyn
+.plugins
 
 # OS generated files #
 ######################
