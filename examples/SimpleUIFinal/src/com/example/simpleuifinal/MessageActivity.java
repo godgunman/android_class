@@ -41,8 +41,6 @@ public class MessageActivity extends Activity {
 		progressDialog.show();
 		setListViewContent();
 		
-		Intent intent = getIntent();
-		Log.d("debug", "notification data = " + intent.getExtras().getString("com.parse.Data"));
 	}
 
 	private View ParseObjectToView(ParseObject obj) {
