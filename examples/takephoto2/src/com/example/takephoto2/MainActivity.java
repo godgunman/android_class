@@ -26,8 +26,10 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,11 +37,12 @@ public class MainActivity extends Activity {
 
 	private static final int TAKE_PHOTO = 1;
 
+	private ProgressBar progress;
 	private ImageView imageView;
 	private TextView filePathTextView;
 	private TextView parseFileUrlTextView;
-
 	private LinearLayout linearLayout;
+	private LinearLayout.LayoutParams imageMargin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +56,21 @@ public class MainActivity extends Activity {
 		filePathTextView = (TextView) findViewById(R.id.filePath);
 		parseFileUrlTextView = (TextView) findViewById(R.id.parseFileUrl);
 		linearLayout = (LinearLayout) findViewById(R.id.container);
-
+		progress = (ProgressBar) findViewById(R.id.progressBar1);
+		
+		imageMargin = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.WRAP_CONTENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		imageMargin.bottomMargin = 15;
+		
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("photos2");
+		query.orderByDescending("createdAt");
 		query.findInBackground(new FindCallback<ParseObject>() {
 
 			@Override
 			public void done(List<ParseObject> objects, ParseException e) {
-				// TODO Auto-generated method stub
+
+				progress.setVisibility(View.GONE);
 				for (ParseObject obj : objects) {
 					String name = obj.getString("name");
 					ParseFile file = obj.getParseFile("file");
@@ -69,8 +80,7 @@ public class MainActivity extends Activity {
 								data.length);
 						ImageView imageView = new ImageView(MainActivity.this);
 						imageView.setImageBitmap(bitmap);
-
-						linearLayout.addView(imageView);
+						linearLayout.addView(imageView, imageMargin);
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

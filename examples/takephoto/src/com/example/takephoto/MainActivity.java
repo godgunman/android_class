@@ -33,10 +33,14 @@ public class MainActivity extends Activity {
 
 	private static final int TAKE_PHOTO = 1;
 
+	private LinearLayout.LayoutParams imageMargin;
 	private ImageView imageView;
 	private TextView textView;
 	private LinearLayout linearLayout;
 
+	/**
+	 * @see https://parse.com/docs/android_guide#files
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,6 +52,12 @@ public class MainActivity extends Activity {
 		imageView = (ImageView) findViewById(R.id.imageView1);
 		textView = (TextView) findViewById(R.id.textView1);
 		linearLayout = (LinearLayout) findViewById(R.id.container);
+
+		imageMargin = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.WRAP_CONTENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		imageMargin.bottomMargin = 15;
+		
 
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("photos");
 		query.findInBackground(new FindCallback<ParseObject>() {
@@ -64,7 +74,7 @@ public class MainActivity extends Activity {
 					ImageView imageView = new ImageView(MainActivity.this);
 					imageView.setImageBitmap(bitmap);
 
-					linearLayout.addView(imageView);
+					linearLayout.addView(imageView, imageMargin);
 				}
 			}
 		});

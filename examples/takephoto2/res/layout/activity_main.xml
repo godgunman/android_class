@@ -4,7 +4,6 @@
     android:layout_height="match_parent" >
 
     <LinearLayout
-        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -15,24 +14,68 @@
         tools:context=".MainActivity" >
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="File Path:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
             android:id="@+id/filePath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="file path" />
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="/storage/sdcard1/Pictures/photo.png"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="File URL:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/parseFileUrl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="url" />
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="http://files.parse.com/2e44a5c6-fe76-43a3-8235-6f0c3dd83e15/5411c9de-7ceb-48d5-b7f8-51256d0c8fc9-photo.png"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
             android:src="@drawable/ic_launcher" />
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Server Photos:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".MainActivity" >
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
