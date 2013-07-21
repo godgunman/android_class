@@ -44,22 +44,23 @@ public class MainActivity extends Activity {
 				"WRUIsQkcyj0fgv8inoF6hSeo0rftbr2WTKPWLE09");
 
 		setContentView(R.layout.activity_main);
-		
+
 		imageView = (ImageView) findViewById(R.id.imageView1);
 		textView = (TextView) findViewById(R.id.textView1);
 		linearLayout = (LinearLayout) findViewById(R.id.container);
-		
-		ParseQuery query = new ParseQuery("photos");
-		query.findInBackground(new FindCallback() {
-			
+
+		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("photos");
+		query.findInBackground(new FindCallback<ParseObject>() {
+
 			@Override
 			public void done(List<ParseObject> objects, ParseException e) {
 				// TODO Auto-generated method stub
 				for (ParseObject obj : objects) {
 					String name = obj.getString("name");
 					byte[] data = obj.getBytes("file");
-					
-					Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+
+					Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0,
+							data.length);
 					ImageView imageView = new ImageView(MainActivity.this);
 					imageView.setImageBitmap(bitmap);
 
@@ -67,7 +68,7 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
-		
+
 	}
 
 	@Override
@@ -99,10 +100,10 @@ public class MainActivity extends Activity {
 		File imageDir = Environment
 				.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
-		if (imageDir.exists()==false) {
+		if (imageDir.exists() == false) {
 			Log.d("debug", "exists == false");
-			if ( imageDir.mkdir() == false) {
-				Log.d("debug", "create false");				
+			if (imageDir.mkdir() == false) {
+				Log.d("debug", "create false");
 			}
 		}
 
@@ -112,31 +113,33 @@ public class MainActivity extends Activity {
 			BufferedOutputStream bos = new BufferedOutputStream(
 					new FileOutputStream(imageFile));
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
-			
+
 			bitmap.compress(Bitmap.CompressFormat.PNG, 90, bos);
 			bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
-			
+
 			bos.flush();
 			bos.close();
-			
+
+			stream.flush();
+			stream.close();
+
 			textView.setText(imageFile.toString());
-			
+
 			ParseObject obj = new ParseObject("photos");
 			obj.put("file", stream.toByteArray());
 			obj.put("name", "photo1");
-			
+
 			obj.saveInBackground(new SaveCallback() {
-				
+
 				@Override
 				public void done(ParseException e) {
 					// TODO Auto-generated method stub
-					if(e!=null) {
+					if (e != null) {
 						Log.d("deubg", "save done");
 					}
 				}
 			});
-			
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
