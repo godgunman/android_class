@@ -1,0 +1,6 @@
+[submodule "3rd_party_libraries"]
+	path = 3rd_party_libraries
+	url = git@github.com:JakeWharton/ActionBarSherlock.git
+[submodule "3rd_party_libraries/ActionBarSherlock"]
+	path = 3rd_party_libraries/ActionBarSherlock
+	url = git@github.com:JakeWharton/ActionBarSherlock.git
