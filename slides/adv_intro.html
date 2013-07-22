@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+        
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        
+        <link rel="stylesheet" href="reveal/css/reveal.min.css">
+        <link rel="stylesheet" href="reveal/css/theme/default.css" id="theme">
+        
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+        
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h2>Android 進階應用程式設計</h2>
+                    <img src="img/Android_Robot_200.png">
+                </section>
+                <section>
+                    <h2>課程介紹</h2>
+                    <ul>
+                        <li>Android 基礎應用程式設計</li> <br>
+                        <li>課程目標
+                            <ul>
+                                <li>對 Android 有進階的認識</li>
+                                <li>學會開發 Android 應用程式</li>
+                                <li>本課程只是 Android 的冰山一角</li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li>上課方式
+                            <ul>
+                                <li>10% 投影片講解</li>
+                                <li>70% 同步實作講解</li>
+                                <li>20% 學員自己動手實作</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>講師介紹</h2>
+                    <ul>
+                        <li>郭冠宏（GGM）</li>
+                        <li>台大資訊系</li>
+                        <br>
+                        <li>工作經驗（實習）                            
+                            <ul>
+                                <li>Google、Intel、Wantoto Inc、Qualcomm</li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li>教學經驗（課程助教）
+                            <ul>
+                                <li>高等計算機程式設計</li>
+                                <li>網路平台與服務程式設計</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程大綱（cont.）</h2>
+                    <ul>
+                        <li>Day 1 <br> 3rd party libraries I</li><br>
+                        <li>Day 2 <br> 3rd party libraries II</li><br>
+                        <li>Day 3 <br> Push Notification and Broadcast receiver</li><br>
+                        <li>Day 4 <br> 詳解 Intent </li><br>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程大綱（cont.）</h2>
+                    <ul>
+                        <li>Day 5 <br> Content Provider 與 使用 ORM Framework </li><br>
+                        <li>Day 6 <br> Advance UI（Fargment、ViewPager） </li><br>
+                        <li>Day 7 <br> Advance UI2（customer View） </li><br>
+                        <li>Day 8 <br> App Widgets </li><br>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程大綱</h2>
+                    <ul>
+                        <li>Day 9 <br> Android 原始碼</li><br>
+                        <li>Day 10 <br> Android NDK </li><br>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程評分</h2>
+                    <ul>                        
+                        <li>125% 作業，作業總分125分，達70標準即可拿到證書</li><br>
+                    </ul>
+                </section>
+                <section>
+                    <h2>課程參考資料</h2>
+                    <ul>                        
+                        <li><a href="http://developer.android.com/index.html">Android Developer</a></li><br>
+                        <li><a href="http://developer.android.com/sdk/index.html#ExistingIDE">Android-sdk/samples</a></li><br>
+                        <li><a href="http://www.vogella.com/articles/Android/article.html">Vogella Android Development Tutorial</a></li><br>
+                        <li><a href="https://code.google.com/p/androidbmi/">Android BMI（中文）</a></li><br>
+                        <li><a href="http://ppt.cc/CpUN">前資訊系統訓練班投影片</a></li><br>
+                    </ul>
+                </section>
+               </section>
+            </div>
+        </div>
+        <script src="reveal/lib/js/head.min.js"></script>
+        <script src="reveal/js/reveal.min.js"></script>
+        
+        <script>
+            
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+                
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+            
+        </script>
+    </body>
+</html>
