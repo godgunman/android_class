@@ -34,7 +34,7 @@ public class MessageActivity extends Activity {
 		dbHelper.insert(new Message(text, isEncrypt));
 
 		/* 兩種方法實作 Adapter */
-		
+
 		// listView.setAdapter(getSimpleAdapter());
 		listView.setAdapter(getCursorAdapter());
 	}
@@ -42,14 +42,13 @@ public class MessageActivity extends Activity {
 	public SimpleCursorAdapter getCursorAdapter() {
 		Cursor c = dbHelper.getMessagesCursor();
 		String[] from = new String[] { "text", "isEncrypt" };
-		int[] to = new int[] { R.id.textView1, R.id.textView2 };
+		int[] to = new int[] { android.R.id.text1, android.R.id.text2 };
 
 		/*
-		 * 這個建構方法在 API level 11 的時候被列為不建議使用。
-		 * 建議改用 LoaderManager 搭配 CursorLoader。 
+		 * 這個建構方法在 API level 11 的時候被列為不建議使用。 建議改用 LoaderManager 搭配 CursorLoader。
 		 */
 		SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this,
-				R.layout.listview_item, c, from, to);
+				android.R.layout.simple_expandable_list_item_2, c, from, to);
 		return cursorAdapter;
 	}
 
@@ -63,8 +62,9 @@ public class MessageActivity extends Activity {
 			data.add(t);
 		}
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this, data,
-				R.layout.listview_item, new String[] { "text", "isEncrypt" },
-				new int[] { R.id.textView1, R.id.textView2 });
+				android.R.layout.simple_expandable_list_item_2, new String[] {
+						"text", "isEncrypt" }, new int[] { android.R.id.text1,
+						android.R.id.text2 });
 		return simpleAdapter;
 	}
 
