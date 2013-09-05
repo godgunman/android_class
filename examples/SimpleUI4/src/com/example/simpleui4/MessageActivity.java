@@ -57,8 +57,8 @@ public class MessageActivity extends Activity {
 		List<Message> messages = dbHelper.getMessages();
 		for (Message mes : messages) {
 			Map<String, String> t = new HashMap<String, String>();
-			t.put("text", mes.getText());
-			t.put("isEncrypt", String.valueOf(mes.isEncrypt()));
+			t.put("text", mes.text);
+			t.put("isEncrypt", String.valueOf(mes.isEncrypt));
 			data.add(t);
 		}
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this, data,

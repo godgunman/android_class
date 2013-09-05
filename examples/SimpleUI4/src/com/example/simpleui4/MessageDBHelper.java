@@ -17,7 +17,7 @@ public class MessageDBHelper extends SQLiteOpenHelper {
 
 	private static final int DATABASE_VERSION = 1;
 	private static final String CREATE_TABLE = "CREATE TABLE message("
-			+ "id INTEGER, " + "text TEXT, " + "isEncrypt INTEGER, " 
+			+ "id INTEGER, " + "text TEXT, " + "isEncrypt INTEGER, "
 			+ "PRIMARY KEY(id));";
 
 	public MessageDBHelper(Context context) {
@@ -37,9 +37,9 @@ public class MessageDBHelper extends SQLiteOpenHelper {
 	public long insert(Message mes) {
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put("text", mes.getText());
-		values.put("isEncrypt", mes.isEncrypt());
-		
+		values.put("text", mes.text);
+		values.put("isEncrypt", mes.isEncrypt);
+
 		long rowId = db.insert(TABLE_NAME, null, values);
 		Log.d("debug", "id = " + rowId);
 		return rowId;
@@ -51,7 +51,7 @@ public class MessageDBHelper extends SQLiteOpenHelper {
 
 		return db.rawQuery(sql, null);
 	}
-	
+
 	public List<Message> getMessages() {
 		SQLiteDatabase db = getWritableDatabase();
 		String sql = "SELECT * FROM " + TABLE_NAME;
@@ -60,9 +60,9 @@ public class MessageDBHelper extends SQLiteOpenHelper {
 		List<Message> result = new ArrayList<Message>();
 
 		while (cursor.moveToNext()) {
-			result.add(new Message(cursor.getString(1), cursor.getInt(2)!=0));
+			result.add(new Message(cursor.getString(1), cursor.getInt(2) != 0));
 		}
-		
+
 		cursor.close();
 		db.close();
 		return result;

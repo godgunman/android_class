@@ -1,10 +1,11 @@
 package com.example.simpleui4;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -87,6 +88,7 @@ public class MainActivity extends Activity {
 				return false;
 			}
 		});
+		Uri u = Uri.parse("x");
 	}
 
 	private void sendMessage() {
