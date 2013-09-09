@@ -18,8 +18,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" 
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/button1"
@@ -45,8 +45,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" 
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/button1"
@@ -56,12 +56,12 @@
         <Button
             android:id="@+id/button2"
             style="@style/BtnStyle"
-            android:text="+" />
+            android:text="+/-" />
 
         <Button
             android:id="@+id/button3"
             style="@style/BtnStyle"
-            android:text="-" />
+            android:text="/" />
 
         <Button
             android:id="@+id/button4"
@@ -72,8 +72,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" 
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/button1"
@@ -99,8 +99,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" 
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/button1"
@@ -164,30 +164,32 @@
                 android:orientation="horizontal" >
 
                 <!-- special case -->
+
                 <Button
                     android:id="@+id/button1"
-		            android:layout_width="0dp"
-        		    android:layout_weight="2"
-            		android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:text="0" />
-                
-				<!-- special case -->
+
+                <!-- special case -->
+
                 <Button
                     android:id="@+id/button2"
-		            android:layout_width="0dp"
-        		    android:layout_weight="1"
-            		android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="." />
-
             </LinearLayout>
         </LinearLayout>
-		
-		<!-- special case -->
+
+        <!-- special case -->
+
         <Button
             android:id="@+id/button4"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="=" />
     </LinearLayout>
 
