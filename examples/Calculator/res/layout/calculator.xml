@@ -7,7 +7,6 @@
     android:paddingRight="15dp" >
 
     <EditText
-        android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10" >
@@ -22,22 +21,18 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button1"
             style="@style/BtnStyle"
             android:text="mc" />
 
         <Button
-            android:id="@+id/button2"
             style="@style/BtnStyle"
             android:text="m+" />
 
         <Button
-            android:id="@+id/button3"
             style="@style/BtnStyle"
             android:text="m-" />
 
         <Button
-            android:id="@+id/button4"
             style="@style/BtnStyle"
             android:text="mr" />
     </LinearLayout>
@@ -49,22 +44,18 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button1"
             style="@style/BtnStyle"
             android:text="C" />
 
         <Button
-            android:id="@+id/button2"
             style="@style/BtnStyle"
             android:text="+/-" />
 
         <Button
-            android:id="@+id/button3"
             style="@style/BtnStyle"
             android:text="/" />
 
         <Button
-            android:id="@+id/button4"
             style="@style/BtnStyle"
             android:text="*" />
     </LinearLayout>
@@ -76,22 +67,18 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button1"
             style="@style/BtnStyle"
             android:text="7" />
 
         <Button
-            android:id="@+id/button2"
             style="@style/BtnStyle"
             android:text="8" />
 
         <Button
-            android:id="@+id/button3"
             style="@style/BtnStyle"
             android:text="9" />
 
         <Button
-            android:id="@+id/button4"
             style="@style/BtnStyle"
             android:text="-" />
     </LinearLayout>
@@ -103,22 +90,18 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button1"
             style="@style/BtnStyle"
             android:text="4" />
 
         <Button
-            android:id="@+id/button2"
             style="@style/BtnStyle"
             android:text="5" />
 
         <Button
-            android:id="@+id/button3"
             style="@style/BtnStyle"
             android:text="6" />
 
         <Button
-            android:id="@+id/button4"
             style="@style/BtnStyle"
             android:text="+" />
     </LinearLayout>
@@ -142,17 +125,14 @@
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/button1"
                     style="@style/BtnStyle"
                     android:text="1" />
 
                 <Button
-                    android:id="@+id/button2"
                     style="@style/BtnStyle"
                     android:text="2" />
 
                 <Button
-                    android:id="@+id/button3"
                     style="@style/BtnStyle"
                     android:text="3" />
             </LinearLayout>
@@ -166,7 +146,6 @@
                 <!-- special case -->
 
                 <Button
-                    android:id="@+id/button1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -175,7 +154,6 @@
                 <!-- special case -->
 
                 <Button
-                    android:id="@+id/button2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -186,7 +164,6 @@
         <!-- special case -->
 
         <Button
-            android:id="@+id/button4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
