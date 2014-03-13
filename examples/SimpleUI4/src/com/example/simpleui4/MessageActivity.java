@@ -62,7 +62,7 @@ public class MessageActivity extends Activity {
 			data.add(t);
 		}
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this, data,
-				android.R.layout.simple_expandable_list_item_2, new String[] {
+				android.R.layout.simple_list_item_2, new String[] {
 						"text", "isEncrypt" }, new int[] { android.R.id.text1,
 						android.R.id.text2 });
 		return simpleAdapter;
