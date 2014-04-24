@@ -28,28 +28,31 @@
 
             <Button
                 android:id="@+id/btn_rand"
-                android:layout_width="70dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Rand" />
 
             <Button
                 android:id="@+id/btn_insert"
-                android:layout_width="70dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Insert" />
-            
+
             <Button
                 android:id="@+id/btn_del"
-                android:layout_width="70dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="del" />
+                android:layout_weight="1"
+                android:text="Del" />
 
             <Button
                 android:id="@+id/btn_show"
-                android:layout_width="70dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="show" />
-
+                android:layout_weight="1"
+                android:text="Show" />
         </LinearLayout>
 
         <TextView
