@@ -22,7 +22,7 @@ public class PeopleDBHelper extends SQLiteOpenHelper {
 
 	public PeopleDBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		Log.d("debug", "contructu");
+		Log.d("debug", "constructor");
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class PeopleDBHelper extends SQLiteOpenHelper {
 	}
 
 	public List<People> getPeoples() {
-		SQLiteDatabase db = getWritableDatabase();
+		SQLiteDatabase db = getReadableDatabase();
 		String sql = "SELECT * FROM " + TABLE_NAME;
 
 		Cursor cursor = db.rawQuery(sql, null);
@@ -59,7 +59,6 @@ public class PeopleDBHelper extends SQLiteOpenHelper {
 		while (cursor.moveToNext()) {
 			result.add(new People(cursor.getInt(0), cursor.getString(1), cursor
 					.getInt(2), cursor.getString(3)));
-
 		}
 		cursor.close();
 		db.close();
@@ -69,6 +68,5 @@ public class PeopleDBHelper extends SQLiteOpenHelper {
 	public void deletePeoples() {
 		SQLiteDatabase db = getWritableDatabase();
 		db.delete(TABLE_NAME, "1", null);
-		
 	}
 }
