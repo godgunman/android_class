@@ -2,151 +2,41 @@ package com.example.connectnetwork;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+@SuppressLint("NewApi")
 public class MainActivity extends Activity {
 
-	private final static String EXAMPLE_URL = "http://www.yahoo.com/";
-
+	private static String SAMPLE_URL = "http://www.ntu.edu.tw/";
+	private TextView textView;
 	private ProgressDialog progress;
-	private TextView resultTextView;
-	private Button button1;
-	private Button button2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		resultTextView = (TextView) findViewById(R.id.result);
-		button1 = (Button) findViewById(R.id.button1);
-		button1.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				UrlLoader urlLoader = new UrlLoader();
-				urlLoader.execute(1);
-			}
-		});
-
-		button2 = (Button) findViewById(R.id.button2);
-		button2.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				UrlLoader urlLoader = new UrlLoader();
-				urlLoader.execute(2);
-			}
-		});
-
+		textView = (TextView) findViewById(R.id.textView1);
 		progress = new ProgressDialog(this);
-	}
 
-	private String readStreamToString(InputStream in) {
-		BufferedReader buffer = new BufferedReader(new InputStreamReader(in));
-		try {
-			String line;
-			StringBuilder content = new StringBuilder();
-			while ((line = buffer.readLine()) != null) {
-				content.append(line);
-			}
-			return content.toString();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	private String fetchMethod1() {
-		try {
-			URL url = new URL(EXAMPLE_URL);
-			URLConnection urlConnection = url.openConnection();
-			InputStream is = urlConnection.getInputStream();
-			String content = readStreamToString(is);
-			return content;
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	private String fetchMethod2() {
-
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpGet httpget = new HttpGet(EXAMPLE_URL);
-		try {
-			ResponseHandler<String> responseHandler = new BasicResponseHandler();
-			String content = httpclient.execute(httpget, responseHandler);
-			return content;
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	/**
-	 * Android 在 API 8 之後便不能在 Main Thread 中直接使用網路的功能，否則會丟出
-	 * android.os.NetworkOnMainThreadException 這個例外。所以必須將使用網路的程式碼寫在另外一個 Thread
-	 * 之中。這裡我們使用 AsyncTask 來幫助我們完成這件事情。
-	 * 
-	 * 另外要注意的是，任何會改變 UI 的操作一定要在 Main Thread 中執行。譬如 TextView 裡面的 setText()
-	 * 由於 doInBackground() 並不是 Main Thread 所以不能在這裡操作 UI。 
-	 */
-
-	private class UrlLoader extends AsyncTask<Integer, Integer, String> {
-
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			progress.setTitle("Fetching");
-			progress.show();
-		}
-
-		@Override
-		protected String doInBackground(Integer... params) {
-			int useMethod = params[0];
-			switch (useMethod) {
-			case 1:
-				return fetchMethod1();
-			case 2:
-				return fetchMethod2();
-			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			super.onPostExecute(result);
-			if (result != null) {
-				resultTextView.setText(result);
-			}
-			progress.dismiss();
-		}
 	}
 
 	@Override
@@ -154,6 +44,97 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	public void onClick(View view) {
+		String content = null;
+		if (view.getId() == R.id.button1) {
+			EditText editText = (EditText) findViewById(R.id.editText1);
+
+			fetchMethod1(SAMPLE_URL);
+		} else if (view.getId() == R.id.button2) {
+			content = fetchMethod2();
+		}
+		textView.setText(content);
+	}
+
+	private void fetchMethod1(String url) {
+		AsyncTask<String, Integer, String> task = new AsyncTask<String, Integer, String>() {
+			@Override
+			protected void onPreExecute() {
+				progress.setProgress(0);
+				progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+				progress.setMessage("Loading ... ");
+				progress.show();
+			}
+
+			@Override
+			protected String doInBackground(String... params) {
+				try {
+
+					URL url = new URL(params[0]);
+					URLConnection urlConnection = url.openConnection();
+
+					BufferedReader buffer = new BufferedReader(
+							new InputStreamReader(
+									urlConnection.getInputStream()));
+					try {
+						String line;
+						StringBuilder builder = new StringBuilder();
+
+						/* For performance, using StringBuilder. */
+						while ((line = buffer.readLine()) != null) {
+							builder.append(line);
+
+							/* fake progress */
+							int currentProgress = progress.getProgress();
+							int add = (int) ((100 - currentProgress) * 0.02);
+							publishProgress(currentProgress + add);
+						}
+						return builder.toString();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				progress.setProgress(100);
+				textView.setText(result);
+				progress.dismiss();
+			}
+
+			protected void onProgressUpdate(Integer... values) {
+				progress.setProgress(values[0]);
+			}
+		};
+		task.execute(url);
+	}
+
+	private String fetchMethod2() {
+
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		HttpGet target = new HttpGet(SAMPLE_URL);
+		try {
+			ResponseHandler<String> responseHandler = new BasicResponseHandler();
+			String content = httpClient.execute(target, responseHandler);
+			return content;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
